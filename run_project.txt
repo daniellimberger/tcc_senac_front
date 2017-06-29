@@ -1,0 +1,11 @@
+1- acessar via CMD
+C:\Users\Ligiano Azzi\Desktop\tcc_daniel\front
+
+
+2- rodar comando: live-server
+
+
+3- acessar via url no browser: 
+
+http://localhost:8080/app/#!/home
+http://localhost:8080/app/#!/cliente
