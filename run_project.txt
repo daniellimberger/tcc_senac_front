@@ -8,4 +8,4 @@ C:\Users\Ligiano Azzi\Desktop\tcc_daniel\front
 3- acessar via url no browser: 
 
 http://localhost:8080/app/#!/home
-http://localhost:8080/app/#!/cliente
+http://localhost:8080/app/#!/produto
