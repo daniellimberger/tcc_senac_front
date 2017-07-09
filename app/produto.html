@@ -12,8 +12,27 @@
           </md-input-container>
 
           <md-input-container class="md-block" flex-gt-sm>
+
             <label>Marca</label>
-            <input ng-model="produto.marca">
+
+            <md-select ng-model="produto.marca">
+              <md-option ng-repeat="mca in marcas.data" ng-value="mca.id_marca"  >
+                {{mca.nome_marca}} {{mca.id_marca}}
+              </md-option>
+            </md-select>       
+
+
+
+
+
+
+
+
+
+
+
+
+
           </md-input-container>
 
 
@@ -52,7 +71,12 @@
                         </md-input-container>
 
                         <md-input-container class="md-block" flex="5">
-                            X
+                              <md-button  flex="5" class="md-raised md-warn" ng-click="deletaProduto(prod.id_produto)">X</md-button>
+<md-chips>
+  <button md-chip-remove>
+    <md-icon md-svg-icon="md-close"></md-icon>
+  </button>
+</md-chips>                              
                         </md-input-container>                                          
 
                     </div>        

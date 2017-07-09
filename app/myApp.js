@@ -68,3 +68,6 @@
 		    .primaryPalette('blue-grey')
 		    .accentPalette('grey');
 		});
+
+
+		var url_base = "http://localhost:8081/";
