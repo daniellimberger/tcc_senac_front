@@ -8,75 +8,79 @@
         <div layout-gt-sm="row" >
           <md-input-container class="md-block" flex-gt-sm>
             <label>Nome</label>
-            <input ng-model="nome">
+            <input ng-model="vendedor.nome">
           </md-input-container>
 
           <md-input-container class="md-block" flex-gt-sm>
             <label>Sobrenome</label>
-            <input ng-model="sobrenome">
+            <input ng-model="vendedor.sobrenome">
           </md-input-container>
         </div>
 
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
-            <label>Telefone Fixo</label>
-            <input ng-model="telefoneFixo">
-          </md-input-container>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Telefone Celular</label>
-            <input ng-model="telefoneCelular">
-          </md-input-container>
-        </div>         
-
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
             <label>RG</label>
-            <input ng-model="rg">
+            <input ng-model="vendedor.rg">
           </md-input-container>
           <md-input-container class="md-block" flex-gt-sm>
             <label>CPF</label>
-            <input ng-model="cpf">
+            <input ng-model="vendedor.cpf">
           </md-input-container>
         </div>     
 
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
+            <label>Telefone Fixo</label>
+            <input ng-model="vendedor.telefoneFixo">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Telefone Celular</label>
+            <input ng-model="vendedor.telefoneCelular">
+          </md-input-container>
+        </div>   
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
             <label>Endereço</label>
-            <input ng-model="endereco">
+            <input ng-model="vendedor.endereco">
           </md-input-container>
           <md-input-container class="md-block" flex-gt-sm>
             <label>Bairro</label>
-            <input ng-model="bairro">
+            <input ng-model="vendedor.bairro">
           </md-input-container>
         </div>
 
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Cidade</label>
-            <input ng-model="cidade"> 
+            <input ng-model="vendedor.cidade"> 
           </md-input-container>
           <md-input-container class="md-block" flex-gt-sm>
             <label>CEP</label>
-            <input ng-model="cep">
+            <input ng-model="vendedor.cep">
           </md-input-container>
           <md-input-container class="md-block" flex-gt-sm>
             <label>UF</label>
-            <input ng-model="uf">
+            <input ng-model="vendedor.uf">
           </md-input-container>
         </div>       
 
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Data Cadastro</label>
-            <input ng-model="dataCadastro">
+            <input type="date" ng-model="vendedor.dataCadastro">
           </md-input-container>
         </div>         
 
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Observação</label>
-            <input ng-model="observacao">
+            <input ng-model="vendedor.observacao">
           </md-input-container>
+
+          <md-input-container class="md-block" flex="5">
+              <md-icon md-svg-icon="icon_add" ng-click="cadastraVendedor()"></md-icon>
+          </md-input-container>             
         </div>  
 
 
@@ -87,65 +91,39 @@
   </div>  
 
 
-        <div layout-gt-sm="row">
-          <md-card layout flex="100">
-          <md-card-content  layout-gt-sm="column" flex="100">
+        <div layout-gt-sm="column">
+          <md-card layout flex="100"  ng-repeat="vend in vendedores.data">
+          <md-card-content  layout-sm="column" flex="100" ng-click="opa(vend.nome)">
 
                     <div layout-gt-sm="row">
                         <md-input-container class="md-block" flex-gt-sm>
-                          João
+                          {{vend.nome}}
                         </md-input-container>
 
                         <md-input-container class="md-block" flex-gt-sm>
-                          Silva da Silva
+                          {{vend.sobrenome}}
                         </md-input-container>
 
 
                         <md-input-container class="md-block" flex-gt-sm>
-                          Gravataí
+                          {{vend.telefoneCelular}}
                         </md-input-container>
 
-                        <md-input-container class="md-block" flex-gt-sm>
-                          51 9 9666-4444
-                        </md-input-container>      
                         <md-input-container class="md-block" flex="5">
-                            Editar
+                              <md-button  flex="5" class="md-raised md-warn" ng-click="deletaVendedor(vend.id)">X</md-button>
+                        <md-chips>
+                          <button md-chip-remove>
+                            <md-icon md-svg-icon="md-close"></md-icon>
+                          </button>
+                        </md-chips>                              
                         </md-input-container>                                          
+
                     </div>        
-
-                    <div layout-gt-sm="row">
-                        <md-input-container class="md-block" flex-gt-sm>
-                          <md-divider></md-divider>
-                        </md-input-container> 
-                    </div>    
-
-
-
-                    <div layout-gt-sm="row">
-                        <md-input-container class="md-block" flex-gt-sm>
-                          Maria
-                        </md-input-container>
-
-                        <md-input-container class="md-block" flex-gt-sm>
-                          da Graça
-                        </md-input-container>
-
-
-                        <md-input-container class="md-block" flex-gt-sm>
-                          Canoas
-                        </md-input-container>
-
-                        <md-input-container class="md-block" flex-gt-sm>
-                          51 9 8888-7541
-                        </md-input-container>      
-                        <md-input-container class="md-block" flex="5">
-                            Editar
-                        </md-input-container>                                          
-                    </div>   
+    
 
           </md-card-content>
           </md-card>
-        </div>  
+        </div>   
 
 
 </md-content>

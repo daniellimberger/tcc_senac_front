@@ -5,19 +5,19 @@
 
 
 
-      <form name="clienteForm">
+      <form name="clienteForm" method="POST">
 
 
         <div layout-gt-sm="row" >
 
             <md-input-container class="md-block" flex-gt-sm>
               <label>Nome Fantasia</label>
-              <input ng-model="nomeFantasia">
+              <input ng-model="cliente.nomeFantasia">
             </md-input-container>
 
             <md-input-container class="md-block" flex-gt-sm>
               <label>Razão Social</label>
-              <input ng-model="razaoSocial">
+              <input ng-model="cliente.razaoSocial">
             </md-input-container>
 
         </div>
@@ -25,12 +25,12 @@
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
             <label>CNPJ</label>
-            <input ng-model="cnpj">
+            <input ng-model="cliente.cnpj"  placeholder="00.000.000/0000-00" maxlenght="18">
           </md-input-container>
 
           <md-input-container class="md-block" flex-gt-sm>
             <label>Insc. Estadual</label>
-            <input ng-model="inscEstadual">
+            <input ng-model="cliente.inscEstadual">
           </md-input-container>
 
         </div>     
@@ -39,41 +39,54 @@
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Endereço</label>
-            <input ng-model="endereco">
+            <input ng-model="cliente.endereco">
           </md-input-container>
           <md-input-container class="md-block" flex-gt-sm>
             <label>Bairro</label>
-            <input ng-model="bairro">
+            <input ng-model="cliente.bairro">
           </md-input-container>
         </div>
 
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Cidade</label>
-            <input ng-model="cidade"> 
+            <input ng-model="cliente.cidade"> 
           </md-input-container>
           <md-input-container class="md-block" flex-gt-sm>
             <label>CEP</label>
-            <input ng-model="cep">
+            <input ng-model="cliente.cep">
           </md-input-container>
           <md-input-container class="md-block" flex-gt-sm>
             <label>UF</label>
-            <input ng-model="uf">
+            <input ng-model="cliente.uf">
           </md-input-container>
         </div> 
 
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
+            <label>Telefone Fixo</label>
+            <input ng-model="cliente.telefoneFixo" placeholder="00 0000-0000">
+          </md-input-container>          
+          <md-input-container class="md-block" flex-gt-sm>
             <label>Data Cadastro</label>
-            <input ng-model="dataCadastro">
+            <input type="date" ng-model="cliente.dataCadastro">
           </md-input-container>
         </div>         
 
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Observação</label>
-            <input ng-model="observacao">
+            <input ng-model="cliente.observacao">
           </md-input-container>
+
+          <md-input-container class="md-block" flex="5" ng-show="mostrarBtnCad">
+              <md-icon md-svg-icon="icon_add" ng-click="cadastraCliente()"></md-icon>
+          </md-input-container>    
+          <md-input-container class="md-block" flex="5" ng-show="mostrarBtnEdit">
+            <md-button class="md-raised md-primary" ng-click="editaCliente(cliente.dataCadastro)">Editar</md-button>
+          </md-input-container>    
+
+
         </div>           
 
       </form> 
@@ -83,63 +96,39 @@
   </div>
 
 
-        <div layout-gt-sm="row">
-          <md-card layout flex="100">
-          <md-card-content  layout-gt-sm="column" flex="100">
+        <div layout-gt-sm="column">
+          <md-card layout flex="100"  ng-repeat="cli in clientes.data">
+          <md-card-content  layout-sm="column" flex="100" ng-click="listarUm(cli.id)">
 
                     <div layout-gt-sm="row">
                         <md-input-container class="md-block" flex-gt-sm>
-                          Nescau
+                          {{cli.nome_fantasia}}
                         </md-input-container>
 
                         <md-input-container class="md-block" flex-gt-sm>
-                          3
+                          {{cli.cnpj}}
                         </md-input-container>
 
 
                         <md-input-container class="md-block" flex-gt-sm>
-                          5,00
+                          {{cli.cidade}}
                         </md-input-container>
 
-                        <md-input-container class="md-block" flex-gt-sm>
-                          15,00
-                        </md-input-container>      
                         <md-input-container class="md-block" flex="5">
-                            X
+                              <md-button  flex="5" class="md-raised md-warn" ng-click="deletaCliente(cli.id)">X</md-button>
+                        <md-chips>
+                          <button md-chip-remove>
+                            <md-icon md-svg-icon="md-close"></md-icon>
+                          </button>
+                        </md-chips>                              
                         </md-input-container>                                          
+
                     </div>        
-
-                    <div layout-gt-sm="row">
-                        <md-input-container class="md-block" flex-gt-sm>
-                          <md-divider></md-divider>
-                        </md-input-container> 
-                    </div>    
-
-
-
-                    <div layout-gt-sm="row">
-                        <md-input-container class="md-block" flex-gt-sm>
-                          Toddy
-                        </md-input-container>
-
-                        <md-input-container class="md-block" flex-gt-sm>
-                          2
-                        </md-input-container>
-
-
-                        <md-input-container class="md-block" flex-gt-sm>
-                          4,00
-                        </md-input-container>
-
-                        <md-input-container class="md-block" flex-gt-sm>
-                          8,00
-                        </md-input-container>      
-                        <md-input-container class="md-block" flex="5">
-                            X
-                        </md-input-container>                                          
-                    </div>   
+    
 
           </md-card-content>
           </md-card>
-        </div>  
+        </div>   
+
+
 </md-content>
