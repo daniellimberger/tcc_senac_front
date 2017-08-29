@@ -6,21 +6,46 @@
 
         <div layout-gt-sm="row" >
 
+              
           <md-input-container class="md-block" flex-gt-sm>
-            <label>Cliente</label>
-            <input ng-model="cliente">
+
+            <md-select ng-model="" placeholder="Cliente">
+              <md-option ng-selected="">
+                teste
+              </md-option>
+              <md-option>
+                teste
+              </md-option>              
+            </md-select>             
+
+          </md-input-container>
+
+
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <md-select ng-model="" placeholder="Produto">
+              <md-option ng-selected="">
+                teste
+              </md-option>
+              <md-option>
+                teste
+              </md-option>              
+            </md-select>     
           </md-input-container>
 
           <md-input-container class="md-block" flex-gt-sm>
-            <label>Produto</label>
-            <input ng-model="produto">
+            <label>Vendedor</label>
+            <input ng-model="vendedor">
           </md-input-container>
 
-
           <md-input-container class="md-block" flex-gt-sm>
-            <label>Período do pedido</label>
+            <label>Período</label>
             <input ng-model="nomeFantasia">
           </md-input-container>
+
+          <md-input-container class="md-block" flex="5">
+              <md-icon md-svg-icon="icon_search" ng-click="filtroRelatorio()"></md-icon>
+          </md-input-container>  
 
         </div>
 
@@ -37,11 +62,11 @@
 
                     <div layout-gt-sm="row">
                         <md-input-container class="md-block" flex-gt-sm>
-                          Nro. 01245
+                          Nro
                         </md-input-container>
 
                         <md-input-container class="md-block" flex-gt-sm>
-                          Cliente XYZ
+                          Cliente
                         </md-input-container>
 
                         <md-input-container class="md-block" flex-gt-sm>
@@ -53,12 +78,9 @@
                         </md-input-container>
 
                         <md-input-container class="md-block" flex-gt-sm>
-                          120,00
+                          Valor
                         </md-input-container>
-
-                        <md-input-container class="md-block" flex="5">
-                            Ver
-                        </md-input-container>                                          
+                                         
                     </div>        
 
                     <div layout-gt-sm="row">
@@ -71,30 +93,53 @@
 
                     <div layout-gt-sm="row">
                         <md-input-container class="md-block" flex-gt-sm>
-                          Nro. 01245
+                          1245
                         </md-input-container>
 
                         <md-input-container class="md-block" flex-gt-sm>
-                          Cliente XYZ
+                          Zanata
                         </md-input-container>
 
                         <md-input-container class="md-block" flex-gt-sm>
-                          Vendedor
+                          Pedro Silva
                         </md-input-container>
 
 
                         <md-input-container class="md-block" flex-gt-sm>
-                          Data Pedido
+                          16/08/2017
                         </md-input-container>
 
                         <md-input-container class="md-block" flex-gt-sm>
                           120,00
                         </md-input-container>
 
-                        <md-input-container class="md-block" flex="5">
-                            Ver
-                        </md-input-container>                                          
                     </div>   
+
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                          1590
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          Xis do Bigode
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          Pedro Silva
+                        </md-input-container>
+
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          20/04/2017
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          1.450,00
+                        </md-input-container>
+
+                    </div>   
+
+
 
           </md-card-content>
           </md-card>

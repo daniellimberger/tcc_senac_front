@@ -8,14 +8,16 @@
 	    
 	    $stateProvider
 	        
-	        // HOME STATES AND NESTED VIEWS ========================================
+	        .state('login', {
+	            url: '/login',
+	            templateUrl: 'login.html',
+	            controller: 'loginController'
+	        })
 	        .state('home', {
 	            url: '/home',
 	            templateUrl: 'home.html',
 	            controller: 'homeController'
 	        })
-	        
-	        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
 	        .state('cliente', {
 	            url: '/cliente',
 	            templateUrl: 'cliente.html',
@@ -55,7 +57,8 @@
     	  .icon("icon_estoque", "./assets/svg/ic_dns_black_24px.svg", 24)    	  
     	  .icon("icon_relatorios", "./assets/svg/ic_assessment_black_24px.svg", 24) 
     	  .icon("icon_pedidos", "./assets/svg/ic_content_paste_black_24px.svg", 24)   	  
-    	  .icon("icon_add", "./assets/svg/ic_add_circle_outline_black_24px.svg", 24)   	      	  
+    	  .icon("icon_add", "./assets/svg/ic_add_circle_outline_black_24px.svg", 24) 
+    	  .icon("icon_search", "./assets/svg/ic_search_black_24px.svg", 24)     	    	      	  
 
 
 

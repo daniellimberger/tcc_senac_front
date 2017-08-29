@@ -3,6 +3,8 @@ myApp.controller('relatorioController',  ['$scope', '$rootScope', function($scop
 	$rootScope.tituloPagina = 'Relatório';
 	$scope.nomeContato = "Ligiano Azzi";
 
+	$scope.vendedor = "Pedro Silva";
+
 
    
 }]);
