@@ -7,53 +7,87 @@
           <md-card layout flex="100">
           <md-card-content  layout-gt-sm="row" flex="100">
 
+
             <md-input-container class="md-block" flex-gt-sm>
-              <label>Cliente</label>
-              <input ng-model="cliente">
+              <label>Pedido Nro:</label>
+              <input type="text"ng-model="pedido.nro_pedido">
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+
+            <label>Cliente</label>
+
+            <md-select ng-model="pedido.idCliente">
+              <md-option ng-repeat="cli in clientes.data" ng-value="cli.id">
+                {{cli.nome_fantasia}}
+              </md-option>
+            </md-select>       
+
+
             </md-input-container>
 
             <md-input-container class="md-block" flex-gt-sm>
               <label>Data Pedido</label>
-              <input ng-model="produto">
+              <input type="date"ng-model="pedido.dataPedido">
             </md-input-container>
 
 
             <md-input-container class="md-block" flex-gt-sm>
-              <label>Data Entrega</label>
-              <input ng-model="nomeFantasia">
+              <label>Data Previsão Entrega</label>
+              <input type="date" ng-model="pedido.dataPrevisaoEntrega">
             </md-input-container>
+
+            <br>
+
+            <md-button ng-click="cadastrarPedido()" class="md-raised" ng-class="{'md-warn':pedidoNaoiniciado, 'md-primary':pedidoIniciado}">Iniciar Pedido</md-button>
+
 
            </md-card-content>
           </md-card>
+
         </div>
 
+
+<!-- inicio desabilita / habilita -->
+
+  <div>
         <div layout-gt-sm="row">
           <md-card layout flex="100">
           <md-card-content  layout-gt-sm="row" flex="100">
 
+
             <md-input-container class="md-block" flex-gt-sm>
+
               <label>Produto</label>
-              <input ng-model="cliente">
+
+            <md-select ng-model="pedidoItem.idProduto" >
+              <md-option ng-repeat="prod in produtos.data" ng-value="prod.id_produto" ng-click="atualizaValorUnit(prod.valor_produto)">
+                {{prod.nome_produto}}
+              </md-option>
+            </md-select>      
+
             </md-input-container>
+
+
 
             <md-input-container class="md-block" flex-gt-sm>
               <label>Quantidade</label>
-              <input ng-model="produto">
+              <input type="number" ng-model="pedidoItem.qtdItem" ng-keyup="atualizaValorProdutoTotal()">
             </md-input-container>
 
 
             <md-input-container class="md-block" flex-gt-sm>
-              <label>Valor Unitário</label>
-              <input ng-model="nomeFantasia">
+              <label>Valor Unitário Produto</label>
+              <input ng-model="pedidoItem.valorUnit">
             </md-input-container>
 
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Valor Total</label>
-              <input ng-model="nomeFantasia">
+           <md-input-container class="md-block" flex-gt-sm>
+              <label>Valor Total Produto</label>
+              <input ng-model="pedidoItem.valorUnitTotal">
             </md-input-container>            
 
           <md-input-container class="md-block" flex="5">
-              <md-icon md-svg-icon="icon_add" ng-click="teste()"></md-icon>
+              <md-icon md-svg-icon="icon_add" ng-click="cadastrarPedidoItem()"></md-icon>
           </md-input-container>            
 
            </md-card-content>
@@ -62,30 +96,56 @@
 
 
 
-        <div layout-gt-sm="row">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div layout-gt-sm="row"  ng-repeat="pedido_item in pedido_itens.data">
           <md-card layout flex="100">
           <md-card-content  layout-gt-sm="column" flex="100">
 
                     <div layout-gt-sm="row">
                         <md-input-container class="md-block" flex-gt-sm>
-                          Nescau
+                          {{pedido_item.item_produto}}
                         </md-input-container>
 
                         <md-input-container class="md-block" flex-gt-sm>
-                          3
+                          {{pedido_item.item_quantidade}}
                         </md-input-container>
 
 
                         <md-input-container class="md-block" flex-gt-sm>
-                          5,00
+                          {{pedido_item.item_valor_unitario}}
                         </md-input-container>
 
                         <md-input-container class="md-block" flex-gt-sm>
-                          15,00
+                          {{pedido_item.item_valor_unitario_total}}
                         </md-input-container>      
+
                         <md-input-container class="md-block" flex="5">
-                            X
-                        </md-input-container>                                          
+                              <md-button  flex="5" class="md-raised md-warn" ng-click="deletaPedidoItem(pedido_item.pi_id)">X {{pedido_item.pi_id}}</md-button>
+                        <md-chips>
+                          <button md-chip-remove>
+                            <md-icon md-svg-icon="md-close"></md-icon>
+                          </button>
+                        </md-chips>                              
+                        </md-input-container>     
+
                     </div>        
 
                     <div layout-gt-sm="row">
@@ -94,63 +154,36 @@
                         </md-input-container> 
                     </div>    
 
-
-
-                    <div layout-gt-sm="row">
-                        <md-input-container class="md-block" flex-gt-sm>
-                          Toddy
-                        </md-input-container>
-
-                        <md-input-container class="md-block" flex-gt-sm>
-                          2
-                        </md-input-container>
-
-
-                        <md-input-container class="md-block" flex-gt-sm>
-                          4,00
-                        </md-input-container>
-
-                        <md-input-container class="md-block" flex-gt-sm>
-                          8,00
-                        </md-input-container>      
-                        <md-input-container class="md-block" flex="5">
-                            X
-                        </md-input-container>                                          
-                    </div>   
-
           </md-card-content>
           </md-card>
         </div>
 
-        <div layout-gt-sm="row">
-          <md-card layout flex="100">
-          <md-card-content  layout-gt-sm="column" flex="100">
-
-                    <div layout-gt-sm="row">
-                        <md-input-container class="md-block" flex-gt-sm>
-                          Total:  
-                        </md-input-container>
-
-                        <md-input-container class="md-block" flex-gt-sm>
-                          
-                        </md-input-container>
 
 
-                        <md-input-container class="md-block" flex-gt-sm>
-                          
-                        </md-input-container>
 
-                        <md-input-container class="md-block" flex-gt-sm>
-                          23,00
-                        </md-input-container>      
-                        <md-input-container class="md-block" flex="5">
-                            
-                        </md-input-container>                                          
-                    </div>   
 
-          </md-card-content>
-          </md-card>
-        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+<!-- fim desabilita / habilita -->        
+
+ 
 
 
 

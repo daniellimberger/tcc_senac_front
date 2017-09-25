@@ -1,7 +1,5 @@
 myApp.controller('clienteController',  ['$scope', '$http','$rootScope',  function($scope, $http, $rootScope, $mdDateLocale){
 
-
-
 	$rootScope.tituloPagina = "Cadastro de Cliente";
 
 	$rootScope.mostrarBtnCad = true;			
