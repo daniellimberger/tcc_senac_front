@@ -17,8 +17,7 @@ myApp.controller('pedidoController',  ['$scope', '$http', '$rootScope', function
 	$scope.pedidoItem.valorUnit = 0;
 	$scope.pedidoItem.qtdItem = 0;
 
-	$scope.pedidoItem.valorUnitTotal = 0;
-
+    $scope.pedidoItem.valorUnitDesconto = 0;
 
 
 
@@ -65,6 +64,8 @@ myApp.controller('pedidoController',  ['$scope', '$http', '$rootScope', function
 							$scope.pedidoIniciado = true;
 
 							$scope.pedido.nro_pedido = data.data; 
+					
+
 						}
 					 	console.log(data);
 					 });
@@ -96,6 +97,7 @@ myApp.controller('pedidoController',  ['$scope', '$http', '$rootScope', function
 							$scope.pedidoItem.valorUnit = "";
 			  		        $scope.pedidoItem.valorUnitTotal = "";
 
+							$scope.buscarDadosPedidoItem($scope.pedido.nro_pedido);							
 
 
 						}
@@ -103,16 +105,41 @@ myApp.controller('pedidoController',  ['$scope', '$http', '$rootScope', function
 					 });
 	}
 
-
 	$scope.buscarDadosPedidoItem = function(){
-		$http
-		.get(url_base+"Controller/pedido_controller.php?function=listar_todos_pedidoItem")
-		.then(function(data){
-				$scope.pedido_itens = data;
-				console.log(data);
-		});
+
+		$http({
+		method  : 'POST',
+		url     :  url_base+"Controller/pedido_controller.php?function=listar_todos_pedidoItem",
+		data: {
+		    	nro_pedido        : $scope.pedido.nro_pedido,
+		    },
+		headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)		
+		}).then(function (data) {
+			$scope.pedido_itens = data;
+			alert(data.data);
+      	});
 	}
-	$scope.buscarDadosPedidoItem();	
+
+
+
+	$scope.aplicaDescontoItem = function(percentual_desconto){
+	
+
+			desc = percentual_desconto;
+			alert(desc);
+
+			valor_unitario = parseFloat($scope.pedidoItem.valorUnitTotal);
+			alert(valor_unitario);
+
+			valor_a_descontar = valor_unitario * (desc/100);
+
+			valor_apos_desconto = valor_unitario - valor_a_descontar;
+
+
+			$scope.pedidoItem.valorUnitTotal = valor_apos_desconto;
+
+
+	}
 
 	$scope.deletaPedidoItem = function(id_deletar){
 
@@ -134,10 +161,12 @@ myApp.controller('pedidoController',  ['$scope', '$http', '$rootScope', function
 	}
 
 
+	// zerando os valores para obrigar o usuario a repor os valores
 	$scope.atualizaValorUnit = function(param){
 		$scope.pedidoItem.valorUnit = param;
 		$scope.pedidoItem.qtdItem = 0;
 	    $scope.pedidoItem.valorUnitTotal = 0;
+	    $scope.pedidoItem.valorUnitDesconto = 0;
 	}
 
 	$scope.atualizaValorProdutoTotal = function(){
