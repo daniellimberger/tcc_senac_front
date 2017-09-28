@@ -19,8 +19,11 @@ myApp.controller('pedidoController',  ['$scope', '$http', '$rootScope', function
 
     $scope.pedidoItem.valorUnitDesconto = 0;
 
+    $scope.totalPedido = 0;
 
-
+    $scope.somaPedido = function(valorLinha){
+    	$scope.totalPedido = parseFloat($scope.totalPedido) + parseFloat(valorLinha);
+    }
 
 
 	$scope.buscarDadosCliente = function(){
@@ -57,7 +60,6 @@ myApp.controller('pedidoController',  ['$scope', '$http', '$rootScope', function
 					        },
 					  headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
 					 }).then(function (data) {
-					 	alert(data.data);
 
 					 	if(data.status == 200){
 							$scope.pedidoNaoiniciado = false;
@@ -67,7 +69,7 @@ myApp.controller('pedidoController',  ['$scope', '$http', '$rootScope', function
 					
 
 						}
-					 	console.log(data);
+
 					 });
 	}
 
@@ -86,7 +88,6 @@ myApp.controller('pedidoController',  ['$scope', '$http', '$rootScope', function
 					        },
 					  headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
 					 }).then(function (data) {
-					 	alert(data.data);
 
 					 	if(data.status == 200){
 							//alert(data.data); 
@@ -97,11 +98,9 @@ myApp.controller('pedidoController',  ['$scope', '$http', '$rootScope', function
 							$scope.pedidoItem.valorUnit = "";
 			  		        $scope.pedidoItem.valorUnitTotal = "";
 
-							$scope.buscarDadosPedidoItem($scope.pedido.nro_pedido);							
-
+							$scope.buscarDadosPedidoItem($scope.pedido.nro_pedido);	
 
 						}
-					 	console.log(data);
 					 });
 	}
 
@@ -116,7 +115,6 @@ myApp.controller('pedidoController',  ['$scope', '$http', '$rootScope', function
 		headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)		
 		}).then(function (data) {
 			$scope.pedido_itens = data;
-			alert(data.data);
       	});
 	}
 
@@ -126,17 +124,15 @@ myApp.controller('pedidoController',  ['$scope', '$http', '$rootScope', function
 	
 
 			desc = percentual_desconto;
-			alert(desc);
 
 			valor_unitario = parseFloat($scope.pedidoItem.valorUnitTotal);
-			alert(valor_unitario);
 
 			valor_a_descontar = valor_unitario * (desc/100);
 
 			valor_apos_desconto = valor_unitario - valor_a_descontar;
 
 
-			$scope.pedidoItem.valorUnitTotal = valor_apos_desconto;
+			$scope.pedidoItem.valorUnitTotal = parseFloat(valor_apos_desconto);
 
 
 	}
