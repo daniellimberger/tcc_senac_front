@@ -13,11 +13,7 @@ myApp.controller('vendedorController',  ['$scope', '$http','$rootScope',  functi
 	}
 	$scope.buscarDadosVendedor();
 
-
-
-//	$scope.vendedor = [];
-
-	$scope.vendedor = ({
+	$scope.vendedor = ({ // preenchendo os campos para teste da funcao de cadastro
 						      nome: 'Ligiano', 
 						 sobrenome: 'Azzi',
 						        rg: '00.000.000/0001-10',
@@ -92,14 +88,11 @@ myApp.controller('vendedorController',  ['$scope', '$http','$rootScope',  functi
 
 		$scope.buscarDadosVendedor();
 		// atualiza a lista
-		// poderia usar watch
 
 	}	
 
 
-	$scope.opa = function (opa){
-		alert(opa);
-	}
+
 
 
    

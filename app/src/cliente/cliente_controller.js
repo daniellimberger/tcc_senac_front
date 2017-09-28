@@ -41,10 +41,7 @@ myApp.controller('clienteController',  ['$scope', '$http','$rootScope',  functio
 					        },
 					  headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
 					 }).then(function (data) {
-    					//console.log(moment($scope.cliente.dataCadastro).format('YYYY-MM-DD'));
-    					alert( moment($scope.cliente.dataCadastro).format('YYYY-MM-DD'));
-    					alert( $scope.cliente.dataCadastro );
-    					console.log(data);
+					 	// colocar um alerta aqui, feedback ao usuario
 					 });
 
 		$scope.buscarDadosCliente();		
@@ -81,29 +78,11 @@ myApp.controller('clienteController',  ['$scope', '$http','$rootScope',  functio
 
 		$scope.buscarDadosCliente();
 		// atualiza a lista
-		// poderia usar watch
 
 	}	
 
 	$scope.editaCliente = function(id_editar){
-
-alert(id_editar);
-console.log(id_editar);
-/*		$http({
-		method  : 'POST',
-		url     :  url_base+"Controller/cliente_controller.php?function=deletar",
-		data: {
-		    	id_deletar        : id_deletar,
-		    },
-		headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)		
-		}).then(function (data) {
-			alert('deletou');
-      	});
-
-		$scope.buscarDadosCliente();
-		// atualiza a lista
-		// poderia usar watch
-*/
+		// aguardando codigo
 	}		
 
 	$scope.listarUm = function(id_listar){
@@ -135,12 +114,6 @@ console.log(id_editar);
 
       	});
 
-		//$scope.buscarDadosCliente();
-		// atualiza a lista
-		// poderia usar watch
 	}	
-
-
-
-   
+ 
 }]);

@@ -1,9 +1,13 @@
+ // referência, de onde eu tirei a biblioteca do campo de data 
  // https://github.com/alenaksu/mdPickers //
 
-         var myApp = angular.module("myApp", ["ngMaterial", "ui.router"]); 
+       var myApp = angular.module("myApp", ["ngMaterial", "ui.router"]); 
  
 		myApp.config(function($stateProvider, $urlRouterProvider, $mdIconProvider) {
 	    
+	   
+
+		// configurando as rotas
 	    $urlRouterProvider.otherwise('/home');
 	    
 	    $stateProvider
@@ -60,17 +64,15 @@
     	  .icon("icon_add", "./assets/svg/ic_add_circle_outline_black_24px.svg", 24) 
     	  .icon("icon_search", "./assets/svg/ic_search_black_24px.svg", 24)     	    	      	  
 
-
-
-    	  
-
 		});
 
+
+		// configurando o tema do angular material
 		myApp.config(function($mdThemingProvider) {
 		  $mdThemingProvider.theme('myTheme')
 		    .primaryPalette('blue-grey')
 		    .accentPalette('grey');
 		});
 
-
+		// definindo url base, isto serve para que se o sistema mudar de servidor, eu precise alterar somente aqui
 		var url_base = "http://localhost:8081/";

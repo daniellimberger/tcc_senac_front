@@ -152,7 +152,6 @@ myApp.controller('pedidoController',  ['$scope', '$http', '$rootScope', function
 
 		$scope.buscarDadosPedidoItem();
 		// atualiza a lista
-		// poderia usar watch
 
 	}
 
