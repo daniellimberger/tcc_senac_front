@@ -14,19 +14,19 @@ myApp.controller('vendedorController',  ['$scope', '$http','$rootScope',  functi
 	$scope.buscarDadosVendedor();
 
 	$scope.vendedor = ({ // preenchendo os campos para teste da funcao de cadastro
-						      nome: 'Ligiano', 
-						 sobrenome: 'Azzi',
-						        rg: '00.000.000/0001-10',
-				               cpf: '007.836.980-03',
-                      telefoneFixo: '51 3468-9000',				               
-                   telefoneCelular: '51 9305.6977',	                    
-			              endereco: 'Rua Sete Povos, 78',
-				            bairro: 'Nossa Sra. das Graças',
-				            cidade: 'Canoas',
-				               cep: '94920-170',
-				                uf: 'RS',
+						      nome: '', 
+						 sobrenome: '',
+						        rg: '',
+				               cpf: '',
+                      telefoneFixo: '',				               
+                   telefoneCelular: '',	                    
+			              endereco: '',
+				            bairro: '',
+				            cidade: '',
+				               cep: '',
+				                uf: '',
                       dataCadastro: new Date(),
-	                    observacao: 'nada a declarar'
+	                    observacao: ''
 					  });
 
 
