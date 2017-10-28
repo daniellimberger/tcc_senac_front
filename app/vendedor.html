@@ -78,9 +78,12 @@
             <input ng-model="vendedor.observacao">
           </md-input-container>
 
-          <md-input-container class="md-block" flex="5">
+          <md-input-container class="md-block" flex="5" ng-show="mostrarBtnCad">
               <md-icon md-svg-icon="icon_add" ng-click="cadastraVendedor()"></md-icon>
-          </md-input-container>             
+          </md-input-container> 
+          <md-input-container class="md-block" flex="5" ng-show="mostrarBtnEdit">
+            <md-button class="md-raised md-primary" ng-click="editaVendedor()">Editar</md-button>
+          </md-input-container>                        
         </div>  
 
 
@@ -93,7 +96,7 @@
 
         <div layout-gt-sm="column">
           <md-card layout flex="100"  ng-repeat="vend in vendedores.data">
-          <md-card-content  layout-sm="column" flex="100" ng-click="opa(vend.nome)">
+          <md-card-content  layout-sm="column" flex="100" ng-click="listarUm(vend.id)">
 
                     <div layout-gt-sm="row">
                         <md-input-container class="md-block" flex-gt-sm>

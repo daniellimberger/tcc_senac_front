@@ -1,0 +1,102 @@
+<md-content>
+ 
+
+
+  <div layout-gt-sm="row">
+    <md-card layout flex="100">
+    <md-card-content  layout-gt-sm="column" flex="100">
+
+
+
+
+
+        <div layout-gt-sm="row" >
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Produto</label>
+            <input ng-model="filtro_produto">            
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Marca</label>
+            <md-select ng-model="filtro_marca">
+              <md-option ng-repeat="mca in marcas.data" ng-value="mca.nome_marca"  >
+                {{mca.nome_marca}}
+              </md-option>
+            </md-select>       
+          </md-input-container>
+
+          <md-input-container class="md-block" flex="5">
+              <md-icon md-svg-icon="icon_add" ng-click="cadastraProduto()"></md-icon>
+          </md-input-container>    
+
+        </div>
+
+
+  
+        <div layout-gt-sm="column">
+          <md-card layout flex="100">
+          <md-card-content  layout-sm="column" flex="100">
+
+                    <div layout-gt-sm="row">
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          (ID)
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          (PRODUTO)
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          (MARCA)
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          (VALOR)
+                        </md-input-container>
+
+                    </div>        
+    
+
+          </md-card-content>
+          </md-card>
+        </div>
+
+
+        <div layout-gt-sm="column">
+          <md-card layout flex="100"  ng-repeat="prod in produtos.data | filter:{nome_produto:filtro_produto} | filter:{nome_marca:filtro_marca}" >
+          <md-card-content  layout-sm="column" flex="100">
+
+                    <div layout-gt-sm="row">
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          {{prod.id_produto}}
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          {{prod.nome_produto}}
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          {{prod.nome_marca}}
+                        </md-input-container>
+
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          {{prod.valor_produto}}
+                        </md-input-container>
+
+                    </div>        
+    
+
+          </md-card-content>
+          </md-card>
+        </div>  
+
+          </md-card-content>
+          </md-card>
+        </div>  
+
+
+</md-content>

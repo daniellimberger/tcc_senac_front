@@ -2,11 +2,15 @@ myApp.controller('produtoController',  ['$scope', '$http','$rootScope',  functio
 
 	$rootScope.tituloPagina = "Produto";
 
+	$rootScope.mostrarBtnCad = true;			
+
+
 	$scope.buscarDadosProduto = function(){
 		$http
 		.get(url_base+"Controller/produto_controller.php?function=listar_todos")
 		.then(function(data){
 				$scope.produtos = data;
+
 		});
 	}
 	$scope.buscarDadosProduto();
@@ -37,6 +41,7 @@ myApp.controller('produtoController',  ['$scope', '$http','$rootScope',  functio
 					  		marca: $scope.produto.marca,
 					  		valor: $scope.produto.valor
 					        },
+					        
 					  headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
 					 });
 
@@ -69,5 +74,55 @@ myApp.controller('produtoController',  ['$scope', '$http','$rootScope',  functio
 		// poderia usar watch
 
 	}
+
+
+	$scope.editaProduto = function(){
+					$http({
+					  method  : 'POST',
+					  url     :  url_base+"Controller/produto_controller.php?function=editar",
+					  data: {
+					  			 	 nome : $scope.produto.nome,
+					  		         marca: $scope.produto.marca,
+					  		         valor: $scope.produto.valor,
+		 		                 id_editar: $scope.produto.id_produto
+					        },
+					  headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+					 }).then(function (data) {
+					 	console.log(data);
+					 	alert("Alterado com sucesso!")
+					 });
+
+					 	$scope.buscarDadosProduto();
+
+
+
+	}		
+
+
+
+
+
+	$scope.listarUm = function(id_listar){
+
+		$http({
+			url     :  url_base+"Controller/produto_controller.php?function=listar_um&id_listar="+id_listar,
+			dataType: 'json',
+		}).then(function (retorno) {
+
+
+			$scope.produto.id_produto = retorno.data.id_produto;
+			$scope.produto.nome = retorno.data.nome;
+			$scope.produto.marca = retorno.data.marca;
+			$scope.produto.valor = retorno.data.valor;
+
+
+			$rootScope.mostrarBtnCad = false;
+			$rootScope.mostrarBtnEdit = true;			
+
+      	});
+
+	}			
+
+
 	
 }]);

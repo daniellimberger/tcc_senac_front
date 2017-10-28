@@ -1,8 +1,9 @@
 myApp.controller('vendedorController',  ['$scope', '$http','$rootScope',  function($scope, $http, $rootScope, $mdDateLocale){
 
-
-
 	$rootScope.tituloPagina = "Cadastro de Vendedor";
+
+	$rootScope.mostrarBtnCad = true;			
+
 
 	$scope.buscarDadosVendedor = function(){
 		$http
@@ -88,6 +89,78 @@ myApp.controller('vendedorController',  ['$scope', '$http','$rootScope',  functi
 
 		$scope.buscarDadosVendedor();
 		// atualiza a lista
+
+	}
+
+
+	$scope.editaVendedor = function(){
+					$http({
+					  method  : 'POST',
+					  url     :  url_base+"Controller/vendedor_controller.php?function=editar",
+					  data: {
+
+
+
+					  		      nome : $scope.vendedor.nome,
+					  		  sobrenome: $scope.vendedor.sobrenome,
+					  		         rg: $scope.vendedor.rg,
+				  		            cpf: $scope.vendedor.cpf,
+				           telefoneFixo: $scope.vendedor.telefoneFixo,
+				        telefoneCelular: $scope.vendedor.telefoneCelular,
+					  	       endereco: $scope.vendedor.endereco,
+				  		     	 bairro: $scope.vendedor.bairro,
+					  		     cidade: $scope.vendedor.cidade,
+			  		                cep: $scope.vendedor.cep,
+				  		             uf: $scope.vendedor.uf,			  		                
+			  		       dataCadastro: moment($scope.vendedor.dataCadastro).format('YYYY-MM-DD'),
+ 		  		       	     observacao: $scope.vendedor.observacao,
+		 		              id_editar: $scope.vendedor.id_vendedor
+					        },
+					  headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+					 }).then(function (data) {
+					 	console.log(data);
+					 	alert("Alterado com sucesso!")
+					 });
+
+					 $scope.buscarDadosVendedor();
+					 // atualiza a lista
+
+
+	}	
+
+
+
+
+
+		$scope.listarUm = function(id_listar){
+
+		$http({
+			url     :  url_base+"Controller/vendedor_controller.php?function=listar_um&id_listar="+id_listar,
+			dataType: 'json',
+		}).then(function (retorno) {
+
+			dataCad = new Date(retorno.data.data_cadastro);
+			dataCad.setDate(dataCad.getDate() + 1);
+
+			$scope.vendedor.nome = retorno.data.nome;
+			$scope.vendedor.sobrenome = retorno.data.sobrenome;
+			$scope.vendedor.rg = retorno.data.rg;
+			$scope.vendedor.cpf = retorno.data.cpf;
+			$scope.vendedor.telefoneFixo = retorno.data.telefone_fixo;
+			$scope.vendedor.telefoneCelular = retorno.data.telefone_celular;
+			$scope.vendedor.endereco = retorno.data.endereco;
+			$scope.vendedor.bairro = retorno.data.bairro;
+			$scope.vendedor.cidade = retorno.data.cidade;
+			$scope.vendedor.cep = retorno.data.cep;
+			$scope.vendedor.uf = retorno.data.uf;	  		                
+			$scope.vendedor.dataCadastro = dataCad;
+			$scope.vendedor.observacao = retorno.data.observacao;
+			$scope.vendedor.id_vendedor = retorno.data.id_vendedor;
+
+			$rootScope.mostrarBtnCad = false;
+			$rootScope.mostrarBtnEdit = true;			
+
+      	});
 
 	}	
 

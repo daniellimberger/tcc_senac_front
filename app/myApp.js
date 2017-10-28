@@ -41,7 +41,22 @@
 	            url: '/relatorio',
 	            templateUrl: 'relatorio.html',
   				controller: 'relatorioController'
+	        })  	        
+	        .state('relatorio_pedido', {
+	            url: '/relatorio_pedido',
+	            templateUrl: 'relatorio_pedido.html',
+  				controller: 'relatorioPedidoController'
 	        })   	           
+	        .state('relatorio_produto', {
+	            url: '/relatorio_produto',
+	            templateUrl: 'relatorio_produto.html',
+  				controller: 'relatorioProdutoController'
+	        })	 
+	        .state('relatorio_cliente', {
+	            url: '/relatorio_cliente',
+	            templateUrl: 'relatorio_cliente.html',
+  				controller: 'relatorioClienteController'
+	        })	 	               
 	        .state('pedido', {
 	            url: '/pedido',
 	            templateUrl: 'pedido.html',
@@ -73,6 +88,24 @@
 		    .primaryPalette('blue-grey')
 		    .accentPalette('grey');
 		});
+
+
+myApp.filter('unique', function() {
+   return function(collection, keyname) {
+      var output = [], 
+          keys = [];
+
+      angular.forEach(collection, function(item) {
+          var key = item[keyname];
+          if(keys.indexOf(key) === -1) {
+              keys.push(key);
+              output.push(item);
+          }
+      });
+      return output;
+   };
+});
+
 
 		// definindo url base, isto serve para que se o sistema mudar de servidor, eu precise alterar somente aqui
 		var url_base = "http://localhost:8081/";

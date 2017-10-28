@@ -65,7 +65,8 @@ myApp.controller('pedidoController',  ['$scope', '$http', '$rootScope', function
 							$scope.pedidoNaoiniciado = false;
 							$scope.pedidoIniciado = true;
 
-							$scope.pedido.nro_pedido = data.data; 
+							$scope.pedido.nro_pedido = data.data;
+							alert($scope.pedido.nro_pedido); 
 					
 
 						}
@@ -170,6 +171,84 @@ myApp.controller('pedidoController',  ['$scope', '$http', '$rootScope', function
 
 		$scope.pedidoItem.valorUnitTotal = qtd_item * valor_item;
 	}
+
+
+
+
+
+
+
+
+
+
+	$scope.buscarDadosPedidoRel = function(){
+
+		$http({
+		method  : 'POST',
+		url     :  url_base+"Controller/pedido_controller.php?function=listar_todos_pedido",
+		data: {
+		    	nro_pedido        : 'teste',
+		    },	
+		headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)		
+		}).then(function (data) {
+			$scope.pedidos = data;
+      	});
+	}
+	$scope.buscarDadosPedidoRel();
+
+
+	$scope.fecharPedido = function(){
+
+		var htmlMail = document.getElementById("ConteudoMail").innerHTML;
+
+		$http({
+		method  : 'POST',
+		url     : "http://www.ligiano.info/tcc_daniel/Controller/pedido_controller_web.php",
+		data: {
+		    	html_pedido        : htmlMail,
+		    },	
+		headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)		
+		}).then(function (data) {
+			alert(data.data);
+      	});
+
+	}
+
+	$scope.buscaNomeCliente = function(){
+		var id_listar = $scope.pedido.idCliente;
+
+		$http({
+			url     :  url_base+"Controller/cliente_controller.php?function=listar_um&id_listar="+id_listar,
+			dataType: 'json',
+		}).then(function (retorno) {
+
+			$scope.nome_cliente_email = retorno.data.nome_fantasia;
+
+		});
+
+
+		// no ng-change roda a funcao nuscaNomeCliente, 
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    
 }]);

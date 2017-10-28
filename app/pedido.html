@@ -1,9 +1,96 @@
-<md-content>
-  <div>
-      <form name="pedidoForm">
+
+
+
+
+
+
+
+
+
+
+<!-- início conteúdo email -->
+<div ng-show="naoSereiExibido" id="ConteudoMail">
+    <div>
 
 
         <div layout-gt-sm="row">
+
+              <div>
+                <label>Pedido Nro:</label>
+                {{pedido.nro_pedido}}
+              </div>
+
+              <div>
+                <label>Cliente</label>
+                {{nome_cliente_email}}
+              </div>
+
+              <div>
+                <label>Data Pedido</label>
+                {{pedido.dataPedido}}
+              </div>
+
+
+              <div>
+                <label>Data Previsão Entrega</label>
+                {{pedido.dataPrevisaoEntrega}}
+              </div>
+
+        </div>
+
+
+        <div>
+              <div layout-gt-sm="row"  ng-repeat="pedido_item in pedido_itens.data track by $index" 
+              ng-init="somaPedido(pedido_item.item_valor_unitario_total)">
+
+                          <div layout-gt-sm="row">
+                              <md-input-container class="md-block" flex-gt-sm>
+                                Produto: {{pedido_item.item_produto}}
+                              </md-input-container>
+
+                              <md-input-container class="md-block" flex-gt-sm>
+                                Quantidade: {{pedido_item.item_quantidade}}
+                              </md-input-container>
+
+
+                              <md-input-container class="md-block" flex-gt-sm>
+                                Valor Unitário: {{pedido_item.item_valor_unitario}}
+                              </md-input-container>
+
+                              <md-input-container class="md-block" flex-gt-sm>
+                                Valor Total: {{pedido_item.item_valor_unitario_total}}
+                              </md-input-container>      
+
+                          </div>  
+              </div>
+
+              <div>
+               Total Pedido: {{totalPedido}}
+              </div>
+        </div>
+
+
+    </div>
+  </md-content>
+</div> 
+<!-- fim conteudo email -->
+
+
+
+
+
+
+
+
+
+
+
+
+<md-content>
+  <div>
+    <form name="pedidoForm">
+
+      <div layout-gt-sm="row">
           <md-card layout flex="100">
           <md-card-content  layout-gt-sm="row" flex="100">
 
@@ -16,13 +103,14 @@
             <md-input-container class="md-block" flex-gt-sm>
 
             <label>Cliente</label>
-
-            <md-select ng-model="pedido.idCliente">
+            
+            <md-select ng-model="pedido.idCliente" ng-change="buscaNomeCliente()">
               <md-option ng-repeat="cli in clientes.data" ng-value="cli.id">
                 {{cli.nome_fantasia}}
               </md-option>
             </md-select>       
-
+             
+           
 
             </md-input-container>
 
@@ -45,146 +133,236 @@
            </md-card-content>
           </md-card>
 
-        </div>
+      </div>
 
 
 <!-- inicio desabilita / habilita -->
 <!-- aqui a ideia é habilitar esta area somente após o cliente criar o cabeçalho do pedido , questão de usabilidade, evitar que o usuario use errado a tela -->
 
-  <div>
-        <div layout-gt-sm="row">
-          <md-card layout flex="100">
-          <md-card-content  layout-gt-sm="row" flex="100">
+      <div>
+            <div layout-gt-sm="row">
+              <md-card layout flex="100">
+              <md-card-content  layout-gt-sm="row" flex="100">
 
 
-            <md-input-container class="md-block" flex-gt-sm>
+                <md-input-container class="md-block" flex-gt-sm>
 
-              <label>Produto</label>
+                  <label>Produto</label>
 
-            <md-select ng-model="pedidoItem.idProduto" >
-              <md-option ng-repeat="prod in produtos.data" ng-value="prod.id_produto" ng-click="atualizaValorUnit(prod.valor_produto)">
-                {{prod.nome_produto}}
-              </md-option>
-            </md-select>      
+                <md-select ng-model="pedidoItem.idProduto" >
+                  <md-option ng-repeat="prod in produtos.data" ng-value="prod.id_produto" ng-click="atualizaValorUnit(prod.valor_produto)">
+                    {{prod.nome_produto}}
+                  </md-option>
+                </md-select>      
 
-            </md-input-container>
-
-
-
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Quantidade</label>
-              <input type="text" ng-model="pedidoItem.qtdItem" ng-keyup="atualizaValorProdutoTotal()">
-            </md-input-container>
-
-
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Valor Unitário Produto</label>
-              <input ng-model="pedidoItem.valorUnit">
-            </md-input-container>
- 
-           <md-input-container class="md-block" flex-gt-sm>
-              <label>Desconto? (%)</label>
-              <input ng-model="pedidoItem.valorUnitDesconto" type="text" ng-keyup="aplicaDescontoItem($event.target.value)">
-            </md-input-container>  
-
-           <md-input-container class="md-block" flex-gt-sm>
-              <label>Valor Total Produto</label>
-              <input ng-model="pedidoItem.valorUnitTotal">
-            </md-input-container>            
-
-
-          <md-input-container class="md-block" flex="5">
-              <md-icon md-svg-icon="icon_add" ng-click="cadastrarPedidoItem()"></md-icon>
-          </md-input-container>            
-
-           </md-card-content>
-          </md-card>
-        </div>
+                </md-input-container>
 
 
 
-        <div layout-gt-sm="row"  ng-repeat="pedido_item in pedido_itens.data track by $index" 
-        ng-init="somaPedido(pedido_item.item_valor_unitario_total)">
-          <md-card layout flex="100">
-          <md-card-content  layout-gt-sm="column" flex="100">
-
-                    <div layout-gt-sm="row">
-                        <md-input-container class="md-block" flex-gt-sm>
-                          {{pedido_item.item_produto}}
-                        </md-input-container>
-
-                        <md-input-container class="md-block" flex-gt-sm>
-                          {{pedido_item.item_quantidade}}
-                        </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>Quantidade</label>
+                  <input type="text" ng-model="pedidoItem.qtdItem" ng-keyup="atualizaValorProdutoTotal()">
+                </md-input-container>
 
 
-                        <md-input-container class="md-block" flex-gt-sm>
-                          {{pedido_item.item_valor_unitario}}
-                        </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>Valor Unitário Produto</label>
+                  <input ng-model="pedidoItem.valorUnit">
+                </md-input-container>
+     
+               <md-input-container class="md-block" flex-gt-sm>
+                  <label>Desconto? (%)</label>
+                  <input ng-model="pedidoItem.valorUnitDesconto" type="text" ng-keyup="aplicaDescontoItem($event.target.value)">
+                </md-input-container>  
 
-                        <md-input-container class="md-block" flex-gt-sm>
-                          {{pedido_item.item_valor_unitario_total}}
-                        </md-input-container>      
+               <md-input-container class="md-block" flex-gt-sm>
+                  <label>Valor Total Produto</label>
+                  <input ng-model="pedidoItem.valorUnitTotal">
+                </md-input-container>            
 
-                        <md-input-container class="md-block" flex="5">
-                             <md-button  flex="5" class="md-raised md-warn" ng-click="deletaPedidoItem(pedido_item.pi_id)">X {{totalPedido}}
-                            </md-button>
-                        <md-chips>
-                          <button md-chip-remove>
-                            <md-icon md-svg-icon="md-close"></md-icon>
-                          </button>
-                        </md-chips>                              
-                        </md-input-container>     
 
-                    </div>        
+              <md-input-container class="md-block" flex="5">
+                  <md-icon md-svg-icon="icon_add" ng-click="cadastrarPedidoItem()"></md-icon>
+              </md-input-container>            
 
-                    <div layout-gt-sm="row">
-                        <md-input-container class="md-block" flex-gt-sm>
-                          <md-divider> 
-                          </md-divider>
-                        </md-input-container> 
-                    </div>    
-
-          </md-card-content>
-          </md-card>
+               </md-card-content>
+              </md-card>
+            </div>
 
 
 
+            <div layout-gt-sm="row"  ng-repeat="pedido_item in pedido_itens.data track by $index" 
+            ng-init="somaPedido(pedido_item.item_valor_unitario_total)">
+              <md-card layout flex="100">
+              <md-card-content  layout-gt-sm="column" flex="100">
 
-        </div>
+                        <div layout-gt-sm="row">
+                            <md-input-container class="md-block" flex-gt-sm>
+                              {{pedido_item.item_produto}}
+                            </md-input-container>
 
-        <div>
-         Total Pedido: {{totalPedido}}
-        </div>
+                            <md-input-container class="md-block" flex-gt-sm>
+                              {{pedido_item.item_quantidade}}
+                            </md-input-container>
+
+
+                            <md-input-container class="md-block" flex-gt-sm>
+                              {{pedido_item.item_valor_unitario}}
+                            </md-input-container>
+
+                            <md-input-container class="md-block" flex-gt-sm>
+                              {{pedido_item.item_valor_unitario_total}}
+                            </md-input-container>      
+
+                            <md-input-container class="md-block" flex="5">
+                                 <md-button  flex="5" class="md-raised md-warn" ng-click="deletaPedidoItem(pedido_item.pi_id)">X 
+                                </md-button>
+                            <md-chips>
+                              <button md-chip-remove>
+                                <md-icon md-svg-icon="md-close"></md-icon>
+                              </button>
+                            </md-chips>                              
+                            </md-input-container>     
+
+                        </div>        
+
+                        <div layout-gt-sm="row">
+                            <md-input-container class="md-block" flex-gt-sm>
+                              <md-divider> 
+                              </md-divider>
+                            </md-input-container> 
+                        </div>    
+
+              </md-card-content>
+              </md-card>
 
 
 
 
+            </div>
+
+            <div>
+             Total Pedido: {{totalPedido}}
+            </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  </div>
+      </div>
 
 <!-- fim desabilita / habilita -->        
 
-
-
-      </form>
+    </form>
   </div>
 </md-content>
 
+<button ng-click="fecharPedido()">Fechar pedido</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<md-content>
+ 
+
+
+  <div layout-gt-sm="row">
+    <md-card layout flex="100">
+    <md-card-content  layout-gt-sm="column" flex="100">
+
+        <div layout-gt-sm="column">
+          <md-card layout flex="100">
+          <md-card-content  layout-sm="column" flex="100">
+
+                    <div layout-gt-sm="row">
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          (ID)
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          (CLIENTE)
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          (VENDEDOR)
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          (PEDIDO)
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          (ENTREGA)
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          (VALOR)
+                        </md-input-container>
+
+
+                    </div>        
+    
+
+          </md-card-content>
+          </md-card>
+        </div>
+
+
+        <div layout-gt-sm="column">
+          <md-card layout flex="100"  ng-repeat="ped in pedidos.data | filter:{cliente_nome:filtro_cliente} | filter:{nome_marca:filtro_marca} | filter:{pedido_datapedido : filtro_datapedido} | filter:{pedido_dataprevisaoentrega : filtro_dataprevisaoentrega} | filter:{vendedor_nome : filtro_vendedor}" >
+          <md-card-content  layout-sm="column" flex="100">
+
+                    <div layout-gt-sm="row">
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          {{ped.pedido_id}}
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          {{ped.cliente_nome}}
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          {{ped.vendedor_nome}}
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          {{ped.pedido_datapedido}}
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          {{ped.pedido_dataprevisaoentrega}}
+                        </md-input-container>                        
+
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          {{ped.pedido_valortotal}}
+                        </md-input-container>                      
+
+                    </div>        
+    
+
+          </md-card-content>
+          </md-card>
+        </div>  
+
+          </md-card-content>
+          </md-card>
+        </div>  
+
+
+</md-content>

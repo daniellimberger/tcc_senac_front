@@ -1,0 +1,79 @@
+<md-content>
+  <div layout-gt-sm="row">
+    <md-card layout flex="100">
+    <md-card-content  layout-gt-sm="column" flex="100">
+
+
+        <div layout-gt-sm="row" >
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Nome Fantasia</label>
+            <input ng-model="filtro_nomeFantasia">            
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Cidade</label>
+            <md-select ng-model="filtro_cidade">
+              <md-option ng-repeat="cli in clientes.data |  unique: 'cidade'" ng-value="cli.cidade">
+                {{cli.cidade}}
+              </md-option>
+            </md-select>       
+          </md-input-container>
+
+          <md-input-container class="md-block" flex="5">
+              <md-icon md-svg-icon="icon_add" ng-click="cadastraProduto()"></md-icon>
+          </md-input-container>    
+
+        </div>
+
+
+
+      <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            (NOME FANTASIA)
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            (CNPJ)
+          </md-input-container>
+
+
+          <md-input-container class="md-block" flex-gt-sm>
+            (CIDADE)
+          </md-input-container>
+                                     
+
+      </div>  
+
+    </md-card-content>
+    </md-card>      
+  </div>
+
+
+  <div layout-gt-sm="column">
+    <md-card layout flex="100"  ng-repeat="cli in clientes.data | filter:{nome_fantasia:filtro_nomeFantasia} | filter:{cidade:filtro_cidade}" >
+    <md-card-content  layout-sm="column" flex="100" ng-click="listarUm(cli.id)">
+
+      <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            {{cli.nome_fantasia}}
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            {{cli.cnpj}}
+          </md-input-container>
+
+
+          <md-input-container class="md-block" flex-gt-sm>
+            {{cli.cidade}}
+          </md-input-container>
+                                     
+
+      </div>        
+
+    </md-card-content>
+    </md-card>
+  </div>   
+
+
+</md-content>

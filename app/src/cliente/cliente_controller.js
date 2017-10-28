@@ -81,8 +81,35 @@ myApp.controller('clienteController',  ['$scope', '$http','$rootScope',  functio
 
 	}	
 
-	$scope.editaCliente = function(id_editar){
-		// aguardando codigo
+	$scope.editaCliente = function(){
+					$http({
+					  method  : 'POST',
+					  url     :  url_base+"Controller/cliente_controller.php?function=editar",
+					  data: {
+					  		nomeFantasia : $scope.cliente.nomeFantasia,
+					  		  razaoSocial: $scope.cliente.razaoSocial,
+					  		         cnpj: $scope.cliente.cnpj,
+				  		     inscEstadual: $scope.cliente.inscEstadual,
+				  		         endereco: $scope.cliente.endereco,
+					  		       bairro: $scope.cliente.bairro,
+					  		       cidade: $scope.cliente.cidade,
+				  		         	  cep: $scope.cliente.cep,
+					  		           uf: $scope.cliente.uf,
+			  		         telefoneFixo: $scope.cliente.telefoneFixo,
+			  		         dataCadastro: moment($scope.cliente.dataCadastro).format('YYYY-MM-DD'),
+		 		    dataCadastroExtendida: $scope.cliente.dataCadastro,
+		 		               observacao: $scope.cliente.observacao,
+		 		                id_editar: $scope.cliente.id_cliente
+					        },
+					  headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+					 }).then(function (data) {
+					 	console.log(data);
+					 	alert("Alterado com sucesso!")
+					 });
+
+		$scope.buscarDadosCliente();
+		// atualiza a lista
+
 	}		
 
 	$scope.listarUm = function(id_listar){
@@ -92,8 +119,8 @@ myApp.controller('clienteController',  ['$scope', '$http','$rootScope',  functio
 			dataType: 'json',
 		}).then(function (retorno) {
 
-			opa = new Date(retorno.data.data_cadastro);
-			opa.setDate(opa.getDate() + 1);
+			dataCad = new Date(retorno.data.data_cadastro);
+			dataCad.setDate(dataCad.getDate() + 1);
 
 			$scope.cliente.id_cliente = retorno.data.id_cliente;
 			$scope.cliente.nomeFantasia = retorno.data.nome_fantasia;
@@ -106,7 +133,7 @@ myApp.controller('clienteController',  ['$scope', '$http','$rootScope',  functio
 			$scope.cliente.cep = retorno.data.cep;
 			$scope.cliente.uf = retorno.data.uf;
 			$scope.cliente.telefoneFixo = retorno.data.telefone_fixo;
-			$scope.cliente.dataCadastro = opa;
+			$scope.cliente.dataCadastro = dataCad;
 			$scope.cliente.observacao = retorno.data.observacao;
 
 			$rootScope.mostrarBtnCad = false;

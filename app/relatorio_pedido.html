@@ -1,0 +1,132 @@
+<md-content>
+ 
+
+
+  <div layout-gt-sm="row">
+    <md-card layout flex="100">
+    <md-card-content  layout-gt-sm="column" flex="100">
+
+
+
+
+
+        <div layout-gt-sm="row" >
+
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Cliente</label>
+            <md-select ng-model="filtro_cliente">
+              <md-option ng-repeat="cli in clientes.data" ng-value="cli.nome_fantasia">
+                {{cli.nome_fantasia}}
+              </md-option>
+            </md-select>       
+          </md-input-container>
+
+
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Vendedor</label>
+            <md-select ng-model="filtro_vendedor">
+              <md-option ng-repeat="vend in vendedores.data" ng-value="vend.nome"  >
+                {{vend.nome}}
+              </md-option>
+            </md-select>       
+          </md-input-container>
+
+         <md-input-container class="md-block" flex-gt-sm>
+            <label>Pedido</label>
+            <input ng-model="filtro_datapedido">            
+          </md-input-container>
+
+         <md-input-container class="md-block" flex-gt-sm>
+            <label>Entrega</label>
+            <input ng-model="filtro_dataprevisaoentrega">            
+          </md-input-container>          
+
+        </div>
+
+
+  
+        <div layout-gt-sm="column">
+          <md-card layout flex="100">
+          <md-card-content  layout-sm="column" flex="100">
+
+                    <div layout-gt-sm="row">
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          (ID)
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          (CLIENTE)
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          (VENDEDOR)
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          (PEDIDO)
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          (ENTREGA)
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          (VALOR)
+                        </md-input-container>
+
+
+                    </div>        
+    
+
+          </md-card-content>
+          </md-card>
+        </div>
+
+
+        <div layout-gt-sm="column">
+          <md-card layout flex="100"  ng-repeat="ped in pedidos.data | filter:{cliente_nome:filtro_cliente} | filter:{nome_marca:filtro_marca} | filter:{pedido_datapedido : filtro_datapedido} | filter:{pedido_dataprevisaoentrega : filtro_dataprevisaoentrega} | filter:{vendedor_nome : filtro_vendedor}" >
+          <md-card-content  layout-sm="column" flex="100">
+
+                    <div layout-gt-sm="row">
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          {{ped.pedido_id}}
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          {{ped.cliente_nome}}
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          {{ped.vendedor_nome}}
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          {{ped.pedido_datapedido}}
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          {{ped.pedido_dataprevisaoentrega}}
+                        </md-input-container>                        
+
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          {{ped.pedido_valortotal}}
+                        </md-input-container>                      
+
+                    </div>        
+    
+
+          </md-card-content>
+          </md-card>
+        </div>  
+
+          </md-card-content>
+          </md-card>
+        </div>  
+
+
+</md-content>
