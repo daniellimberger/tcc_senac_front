@@ -1,4 +1,4 @@
-myApp.controller('mainController',  ['$scope', '$mdSidenav',function($scope, $mdSidenav){
+myApp.controller('mainController',  ['$scope', '$mdSidenav', '$rootScope',function($scope, $mdSidenav, $rootScope){
 
     $scope.menu = [
         { item: "home"  , link: "/app/#!/home"  , avatar:"icon_empresas"},    
@@ -21,6 +21,23 @@ myApp.controller('mainController',  ['$scope', '$mdSidenav',function($scope, $md
       };
     }
 
-		console.log("teste main controller");	
+
+    $scope.logout = function(){
+                    $rootScope.logado = false;
+                    $rootScope.idVendedor = "";
+                    $rootScope.exibeBtSair = false;
+                    window.location.href = '#!/login';
+    }
+
+    $rootScope.logado = false;
+
+
+    if($rootScope.logado == false){
+                    $rootScope.logado = false;
+                    $rootScope.idVendedor = "";
+                    $rootScope.exibeBtSair = false;
+                    alert("Você precisa estar logado para ter acesso ao painel do sistema!");
+                    window.location.href = '#!/login';     
+    }
 
 }]);

@@ -78,6 +78,8 @@
     	  .icon("icon_pedidos", "./assets/svg/ic_content_paste_black_24px.svg", 24)   	  
     	  .icon("icon_add", "./assets/svg/ic_add_circle_outline_black_24px.svg", 24) 
     	  .icon("icon_search", "./assets/svg/ic_search_black_24px.svg", 24)     	    	      	  
+    	  .icon("icon_search", "./assets/svg/ic_search_black_24px.svg", 24)     	    	      	      	  
+    	  .icon("icon_logout", "./assets/svg/logout.svg", 24)     	    	      	      	  
 
 		});
 

@@ -53,7 +53,7 @@ myApp.controller('pedidoController',  ['$scope', '$http', '$rootScope', function
 					  url     :  url_base+"Controller/pedido_controller.php?function=cadastrar",
 					  data: {
 								  		idCliente : $scope.pedido.idCliente,
-							  			idVendedor: '1',
+							  			idVendedor: $rootScope.idVendedor,
 								  		dataPedido: moment($scope.pedido.dataPedido).format('YYYY-MM-DD'),
 			  		           dataPrevisaoEntrega: moment($scope.pedido.dataPrevisaoEntrega).format('YYYY-MM-DD'),
 			  		                    valorTotal: '0',
@@ -66,7 +66,7 @@ myApp.controller('pedidoController',  ['$scope', '$http', '$rootScope', function
 							$scope.pedidoIniciado = true;
 
 							$scope.pedido.nro_pedido = data.data;
-							alert($scope.pedido.nro_pedido); 
+							
 					
 
 						}

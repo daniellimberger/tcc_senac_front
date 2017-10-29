@@ -1,40 +1,28 @@
-<md-content>
-  <div layout-gt-sm="row">
-    <md-card layout flex="100">
-      <md-card-content  layout-gt-sm="column" flex="100">
+    <div layout="column" flex id="content" role="main">
 
+      <md-content layout="vertical" flex id="content">
+        <div layout="row" layout-align="center center" layout-fill>
+          <md-whiteframe class="md-whiteframe-z1" layout="column" flex="30" layout-padding>
+            <md-content  align="center">
+              <md-input-container>
+                <label>Usuário</label>
+                <input ng-model="user.login">
+              </md-input-container>
+              <md-input-container>
+                <label>Senha</label>
+                <input ng-model="user.senha" type="password">
+              </md-input-container>
+            <md-content>
+              <md-input-container layout-align="center center">
+                <div layout="row" layout-sm="column" layout-margin>
+                  <md-button class="md-raised md-primary" flex="50" flex-sm="100" ng-click="validaAcesso()">Entrar</md-button>
+                </div>
+              </md-input-container>            
+            </md-content>
 
-        <div layout-gt-sm="row" align="center">
-
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Login</label>
-              <input>
-            </md-input-container>
-
+           </md-content>
+          </md-whiteframe>
         </div>
+      </md-content>
 
-        <div layout-gt-sm="row" align="center">
-
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Senha</label>
-              <input>
-            </md-input-container>
-
-        </div>      
-
-        <div layout-gt-sm="row" align="center">
-
-            <md-input-container class="md-block" flex-gt-sm>
-              <md-button class="md-raised md-primary">Entrar</md-button>  
-            </md-input-container>
-
-        </div>
-
-      </md-card>
-    </md-card>
-  </div>  
-</md-content>  
-
-
-
-
+    </div>
