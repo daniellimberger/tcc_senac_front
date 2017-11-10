@@ -27,6 +27,9 @@ myApp.controller('vendedorController',  ['$scope', '$http','$rootScope',  functi
 				               cep: '',
 				                uf: '',
                       dataCadastro: new Date(),
+                              tipo: '',
+		                     login: '',
+		                     senha: '',
 	                    observacao: ''
 					  });
 
@@ -49,6 +52,9 @@ myApp.controller('vendedorController',  ['$scope', '$http','$rootScope',  functi
 			  		                cep: $scope.vendedor.cep,
 				  		             uf: $scope.vendedor.uf,			  		                
 			  		       dataCadastro: moment($scope.vendedor.dataCadastro).format('YYYY-MM-DD'),
+			  		               tipo: $scope.vendedor.tipo,
+				  		          login: $scope.vendedor.login,
+				  		          senha: $scope.vendedor.senha,
  		  		       	     observacao: $scope.vendedor.observacao
 					        },
 					  headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
@@ -70,6 +76,9 @@ myApp.controller('vendedorController',  ['$scope', '$http','$rootScope',  functi
 		$scope.cidade="";
 		$scope.cep="";
 		$scope.dataCadastro="";	
+		$scope.tipo="";
+		$scope.login="";
+		$scope.senha="";
 		$scope.observacao="";
 
 	}
@@ -114,6 +123,9 @@ myApp.controller('vendedorController',  ['$scope', '$http','$rootScope',  functi
 				  		             uf: $scope.vendedor.uf,			  		                
 			  		       dataCadastro: moment($scope.vendedor.dataCadastro).format('YYYY-MM-DD'),
  		  		       	     observacao: $scope.vendedor.observacao,
+ 		  		       	           tipo: $scope.vendedor.tipo,
+	 		  		       	      login: $scope.vendedor.login,
+	 		  		       	      senha: $scope.vendedor.senha,
 		 		              id_editar: $scope.vendedor.id_vendedor
 					        },
 					  headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
@@ -155,6 +167,9 @@ myApp.controller('vendedorController',  ['$scope', '$http','$rootScope',  functi
 			$scope.vendedor.uf = retorno.data.uf;	  		                
 			$scope.vendedor.dataCadastro = dataCad;
 			$scope.vendedor.observacao = retorno.data.observacao;
+			$scope.vendedor.tipo = retorno.data.tipo;
+			$scope.vendedor.login = retorno.data.login;
+			$scope.vendedor.senha = retorno.data.senha;
 			$scope.vendedor.id_vendedor = retorno.data.id_vendedor;
 
 			$rootScope.mostrarBtnCad = false;
