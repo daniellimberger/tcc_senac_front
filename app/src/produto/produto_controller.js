@@ -1,4 +1,4 @@
-myApp.controller('produtoController',  ['$scope', '$http','$rootScope',  function($scope, $http, $rootScope){
+myApp.controller('produtoController',  ['$scope', '$http','$rootScope', '$mdDialog', '$state',  function($scope, $http, $rootScope, $mdDialog, $state){
 
 	$rootScope.tituloPagina = "Produto";
 
@@ -121,7 +121,55 @@ myApp.controller('produtoController',  ['$scope', '$http','$rootScope',  functio
 
       	});
 
-	}			
+	}	
+
+
+$scope.showAdvanced = function(ev) {
+    $mdDialog.show({
+      controller: DialogController,
+      templateUrl: 'produto_cria_marca.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+    })
+    .then(function(answer) {
+      $scope.status = 'You said the information was "' + answer + '".';
+    }, function() {
+      $scope.status = 'You cancelled the dialog.';
+    });
+  };	
+
+  	function DialogController($scope, $mdDialog) {
+	    $scope.hide = function() {
+	      $mdDialog.hide();
+	    };
+
+	    $scope.cancel = function() {
+	      $mdDialog.cancel();
+	    };
+
+	    $scope.answer = function(answer) {
+			$http({
+				method  : 'POST',
+				url     :  url_base+"Controller/marca_controller.php?function=cadastrar_marca",
+				data: {
+						nome : $scope.novaMarca
+				    },
+				    
+				headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+			}).then(function (retorno) {
+
+				 $state.reload();
+
+		 	});		
+
+
+
+	      $mdDialog.hide(answer);
+	      // cadastrar
+	    };
+  	}
 
 
 	

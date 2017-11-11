@@ -11,6 +11,7 @@
             <input ng-model="produto.nome">
           </md-input-container>
 
+
           <md-input-container class="md-block" flex-gt-sm>
 
             <label>Marca</label>
@@ -19,7 +20,9 @@
               <md-option ng-repeat="mca in marcas.data" ng-value="mca.id_marca"  >
                 {{mca.nome_marca}}
               </md-option>
-            </md-select>       
+            </md-select> 
+            <span ng-click="showAdvanced($event)">+add</span> 
+
 
           </md-input-container>
 

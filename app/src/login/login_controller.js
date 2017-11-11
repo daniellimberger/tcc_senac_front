@@ -29,29 +29,29 @@ myApp.controller('loginController',   ['$scope', '$http', '$rootScope', function
 					$rootScope.tipoUser = retorno.data[0].tipo_user;
 
 
-if ($rootScope.tipoUser == 'adm'){
+					if ($rootScope.tipoUser == 'adm'){
 
-    $rootScope.menu = [
-        { item: "home"  , link: "/app/#!/home"  , avatar:"icon_empresas"},    
-        { item: "clientes"  , link: "/app/#!/cliente"  , avatar:"icon_empresas"},
-        { item: "vendedores", link: "/app/#!/vendedor" , avatar:"icon_vendedores"},
-        { item: "produto"   , link: "/app/#!/produto"  , avatar:"icon_estoque"},
-        { item: "relatorio", link: "/app/#!/relatorio", avatar:"icon_relatorios"},
-        { item: "pedido"   , link: "/app/#!/pedido", avatar:"icon_pedidos"},
-    ];
+					    $rootScope.menu = [
+					        { item: "home"  , link: "/app/#!/home"  , avatar:"icon_empresas"},    
+					        { item: "clientes"  , link: "/app/#!/cliente"  , avatar:"icon_empresas"},
+					        { item: "vendedores", link: "/app/#!/vendedor" , avatar:"icon_vendedores"},
+					        { item: "produto"   , link: "/app/#!/produto"  , avatar:"icon_estoque"},
+					        { item: "relatorio", link: "/app/#!/relatorio", avatar:"icon_relatorios"},
+					        { item: "pedido"   , link: "/app/#!/pedido", avatar:"icon_pedidos"},
+					    ];
 
 
-}else{
+					}else{
 
-    $rootScope.menu = [
-        { item: "home"  , link: "/app/#!/home"  , avatar:"icon_empresas"},    
-        { item: "clientes"  , link: "/app/#!/cliente"  , avatar:"icon_empresas"},
-        { item: "produto"   , link: "/app/#!/produto"  , avatar:"icon_estoque"},
-        { item: "relatorio", link: "/app/#!/relatorio", avatar:"icon_relatorios"},
-        { item: "pedido"   , link: "/app/#!/pedido", avatar:"icon_pedidos"},
-    ];
+					    $rootScope.menu = [
+					        { item: "home"  , link: "/app/#!/home"  , avatar:"icon_empresas"},    
+					        { item: "clientes"  , link: "/app/#!/cliente"  , avatar:"icon_empresas"},
+					        { item: "produto"   , link: "/app/#!/produto"  , avatar:"icon_estoque"},
+					        { item: "relatorio", link: "/app/#!/relatorio", avatar:"icon_relatorios"},
+					        { item: "pedido"   , link: "/app/#!/pedido", avatar:"icon_pedidos"},
+					    ];
 
-}
+					}
 
 
 					window.location.href = '#!/home';
