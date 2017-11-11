@@ -1,4 +1,4 @@
-myApp.controller('pedidoController',  ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope, $mdDateLocale){
+myApp.controller('pedidoController',  ['$state', '$scope', '$http', '$rootScope', function($state, $scope, $http, $rootScope, $mdDateLocale){
 
 	$rootScope.tituloPagina = "Novo Pedido";
 
@@ -210,6 +210,8 @@ myApp.controller('pedidoController',  ['$scope', '$http', '$rootScope', function
 		headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)		
 		}).then(function (data) {
 			alert(data.data);
+
+			 $state.reload();
       	});
 
 	}
