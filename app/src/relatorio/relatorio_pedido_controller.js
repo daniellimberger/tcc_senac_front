@@ -3,7 +3,9 @@ myApp.controller('relatorioPedidoController',  ['$scope', '$http', '$rootScope',
 	$rootScope.tituloPagina = "Relatório de Pedidos";
 
 
-
+	$scope.voltar = function(){
+		window.location.href = '#!/relatorio';
+	};
 
 
 	$scope.buscarDadosCliente = function(){

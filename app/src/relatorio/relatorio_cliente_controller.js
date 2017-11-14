@@ -2,7 +2,15 @@ myApp.controller('relatorioClienteController',  ['$scope', '$http','$rootScope',
 
 	$rootScope.tituloPagina = "Relatório de Clientes";
 
-	$rootScope.mostrarBtnCad = true;			
+	$rootScope.mostrarBtnCad = true;	
+
+
+
+	$scope.voltar = function(){
+		window.location.href = '#!/relatorio';
+	};
+
+
 
 	$scope.buscarDadosCliente = function(){
 		$http

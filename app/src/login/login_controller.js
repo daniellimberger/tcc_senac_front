@@ -27,6 +27,8 @@ myApp.controller('loginController',   ['$scope', '$http', '$rootScope', function
 					$rootScope.exibeBtSair = true;
 					$rootScope.idVendedor = retorno.data[0].vendedor_id;
 					$rootScope.tipoUser = retorno.data[0].tipo_user;
+					$rootScope.nomeUser = retorno.data[0].nome;
+					$rootScope.sobrenomeUser = retorno.data[0].sobrenome;
 
 
 					if ($rootScope.tipoUser == 'adm'){
@@ -46,7 +48,6 @@ myApp.controller('loginController',   ['$scope', '$http', '$rootScope', function
 					    $rootScope.menu = [
 					        { item: "home"  , link: "/app/#!/home"  , avatar:"icon_empresas"},    
 					        { item: "clientes"  , link: "/app/#!/cliente"  , avatar:"icon_empresas"},
-					        { item: "produto"   , link: "/app/#!/produto"  , avatar:"icon_estoque"},
 					        { item: "relatorio", link: "/app/#!/relatorio", avatar:"icon_relatorios"},
 					        { item: "pedido"   , link: "/app/#!/pedido", avatar:"icon_pedidos"},
 					    ];

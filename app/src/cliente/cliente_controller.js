@@ -42,23 +42,24 @@ myApp.controller('clienteController',  ['$scope', '$http','$rootScope',  functio
 					  headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
 					 }).then(function (data) {
 					 	// colocar um alerta aqui, feedback ao usuario
+					 	alert("Cadastrado com sucesso!")
 					 });
 
 		$scope.buscarDadosCliente();		
 
-		$scope.nomeFantasia="";
-		$scope.razaoSocial="";
-		$scope.cnpj="";
-		$scope.inscEstadual="";
-		$scope.endereco="";
-		$scope.bairro="";
-		$scope.cidade="";
-		$scope.cep="";
-		$scope.uf="";
-		$scope.telefoneFixo="";
-		$scope.dataCadastro="";	
-		$scope.dataCadastroExtendida="";			
-		$scope.observacao="";
+		$scope.cliente.nomeFantasia="";
+		$scope.cliente.razaoSocial="";
+		$scope.cliente.cnpj="";
+		$scope.cliente.inscEstadual="";
+		$scope.cliente.endereco="";
+		$scope.cliente.bairro="";
+		$scope.cliente.cidade="";
+		$scope.cliente.cep="";
+		$scope.cliente.uf="";
+		$scope.cliente.telefoneFixo="";
+		$scope.cliente.dataCadastro="";	
+		$scope.cliente.dataCadastroExtendida="";			
+		$scope.cliente.observacao="";
 
 	}
 

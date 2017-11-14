@@ -65,21 +65,21 @@ myApp.controller('vendedorController',  ['$scope', '$http','$rootScope',  functi
 		$scope.buscarDadosVendedor();		
 
 		// limpa os campos do formulário
-		$scope.nome="";
-		$scope.sobrenome="";
-		$scope.rg="";
-		$scope.cpf="";
-		$scope.telefoneFixo="";
-		$scope.telefoneCelular="";
-		$scope.endereco="";
-		$scope.bairro="";
-		$scope.cidade="";
-		$scope.cep="";
-		$scope.dataCadastro="";	
-		$scope.tipo="";
-		$scope.login="";
-		$scope.senha="";
-		$scope.observacao="";
+		$scope.vendedor.nome="";
+		$scope.vendedor.sobrenome="";
+		$scope.vendedor.rg="";
+		$scope.vendedor.cpf="";
+		$scope.vendedor.telefoneFixo="";
+		$scope.vendedor.telefoneCelular="";
+		$scope.vendedor.endereco="";
+		$scope.vendedor.bairro="";
+		$scope.vendedor.cidade="";
+		$scope.vendedor.cep="";
+		$scope.vendedor.dataCadastro="";	
+		$scope.vendedor.tipo="";
+		$scope.vendedor.login="";
+		$scope.vendedor.senha="";
+		$scope.vendedor.observacao="";
 
 	}
 

@@ -16,6 +16,12 @@
         <div layout-gt-sm="row">
 
               <div>
+                <label>Vendedor: <br>
+                {{nomeUser}} {{sobrenomeUser}}
+                </label>
+              </div>
+
+              <div>
                 <label>Pedido Nro:</label>
                 {{pedido.nro_pedido}}
               </div>
@@ -92,6 +98,16 @@
       <div layout-gt-sm="row">
           <md-card layout flex="100">
           <md-card-content  layout-gt-sm="row" flex="100">
+
+
+            <md-input-container class="md-block" flex-gt-sm>
+             <label>Vendedor: <br>
+              {{nomeUser}} {{sobrenomeUser}}
+             </label>
+               
+              
+            </md-input-container>
+
 
 
             <md-input-container class="md-block" flex-gt-sm>
