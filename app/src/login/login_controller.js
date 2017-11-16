@@ -30,7 +30,6 @@ myApp.controller('loginController',   ['$scope', '$http', '$rootScope', function
 					$rootScope.nomeUser = retorno.data[0].nome;
 					$rootScope.sobrenomeUser = retorno.data[0].sobrenome;
 
-
 					if ($rootScope.tipoUser == 'adm'){
 
 					    $rootScope.menu = [

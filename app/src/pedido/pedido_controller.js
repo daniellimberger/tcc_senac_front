@@ -188,6 +188,8 @@ myApp.controller('pedidoController',  ['$state', '$scope', '$http', '$rootScope'
 		url     :  url_base+"Controller/pedido_controller.php?function=listar_todos_pedido",
 		data: {
 		    	nro_pedido        : 'teste',
+		    	idVendedor        : $rootScope.idVendedor,
+		    	tipoUser		  : $rootScope.tipoUser
 		    },	
 		headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)		
 		}).then(function (data) {

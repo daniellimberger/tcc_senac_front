@@ -31,7 +31,7 @@
     <script src="src/cliente/cliente_controller.js"></script>
     <script src="src/vendedor/vendedor_controller.js"></script>
     <script src="src/relatorio/relatorio_controller.js"></script>
-    <script src="src/relatorio/relatorio_controller.js"></script>    
+    <script src="src/produto/produto_controller.js"></script>    
     <script src="src/relatorio/relatorio_produto_controller.js"></script>    
     <script src="src/relatorio/relatorio_cliente_controller.js"></script>        
     <script src="src/relatorio/relatorio_pedido_controller.js"></script>        
@@ -74,11 +74,11 @@
     </md-button>
 
     
-    <h1>Painel de Gerenciamento - <b>{{tituloPagina}} </h1>
+    <h1>Painel de Gerenciamento  <b>{{tituloPagina}} &nbsp;&nbsp;&nbsp; {{nomeUser}}  {{tipoUser}}</h1>
 
-    <md-button class="menu md-icon-button" ng-click="logout()" ng-show="exibeBtSair">
-      <md-icon md-svg-icon="icon_logout"></md-icon>
-    </md-button>    
+      <md-button class="menu md-icon-button" ng-click="logout()" ng-show="exibeBtSair">
+        <md-icon md-svg-icon="icon_logout"></md-icon>
+      </md-button>    
 
   </md-toolbar>
 
