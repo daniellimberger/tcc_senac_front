@@ -13,5 +13,9 @@ myApp.controller('relatorioController',  ['$scope', '$rootScope', function($scop
 	$scope.relatorio_produto = function(){
 		window.location.href = '#!/relatorio_produto';
 	};	
+	$scope.relatorio_vendas = function(){
+		window.location.href = '#!/relatorio_vendas';
+	};	
+
   
 }]);

@@ -56,7 +56,12 @@
 	            url: '/relatorio_cliente',
 	            templateUrl: 'relatorio_cliente.html',
   				controller: 'relatorioClienteController'
-	        })	 	               
+	        })	
+	        .state('relatorio_vendas', {
+	            url: '/relatorio_vendas',
+	            templateUrl: 'relatorio_vendas.html',
+  				controller: 'relatorioVendasController'
+	        })	         	               
 	        .state('pedido', {
 	            url: '/pedido',
 	            templateUrl: 'pedido.html',

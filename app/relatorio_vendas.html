@@ -1,0 +1,96 @@
+<md-content>
+ 
+
+
+  <div layout-gt-sm="row">
+    <md-card layout flex="100">
+    <md-card-content  layout-gt-sm="column" flex="100">
+
+
+
+
+
+        <div layout-gt-sm="row" >
+
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Cliente</label>
+            <md-select ng-model="cliente">
+              <md-option ng-repeat="cli in clientes.data" ng-value="cli.id">
+                {{cli.nome_fantasia}}
+              </md-option>
+            </md-select>       
+          </md-input-container>
+
+
+         <md-input-container class="md-block" flex-gt-sm>
+            <label>Vendido em</label>
+            <input type="text" ng-model="periodo_inicio" placeholder="aaaa-mm-dd">            
+          </md-input-container>
+
+         <md-input-container class="md-block" flex-gt-sm>
+            <label>Até</label>
+            <input type="text" ng-model="periodo_fim" placeholder="aaaa-mm-dd">
+          </md-input-container> 
+
+          <md-input-container class="md-block" flex="5">
+              <md-icon md-svg-icon="icon_add" ng-click="atualizaRelatorio()"></md-icon>
+          </md-input-container>  
+
+          <md-input-container class="md-block" flex="10">
+            <md-button class="md-raised md-primary"  ng-click="voltar()">Voltar</md-button>
+          </md-input-container>  
+
+        </div>
+
+
+  
+        <div layout-gt-sm="column">
+          <md-card layout flex="100">
+          <md-card-content  layout-sm="column" flex="100">
+
+                    <div layout-gt-sm="row">
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          (PRODUTO)
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          (QUANTIDADE VENDIDO)
+                        </md-input-container>
+
+                    </div>        
+    
+
+          </md-card-content>
+          </md-card>
+        </div>
+
+
+        <div layout-gt-sm="column">
+          <md-card layout flex="100"  ng-repeat="prod in produtos_vendidos.data" >
+          <md-card-content  layout-sm="column" flex="100">
+
+                    <div layout-gt-sm="row">
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          {{prod.produto}}
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                          {{prod.qtd_vendido}}
+                        </md-input-container>
+
+                    </div>        
+    
+
+          </md-card-content>
+          </md-card>
+        </div>  
+
+          </md-card-content>
+          </md-card>
+        </div>  
+
+
+</md-content>
