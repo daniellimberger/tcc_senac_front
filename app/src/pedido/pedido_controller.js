@@ -91,7 +91,6 @@ myApp.controller('pedidoController',  ['$state', '$scope', '$http', '$rootScope'
 					 }).then(function (data) {
 
 					 	if(data.status == 200){
-							//alert(data.data); 
 							$scope.buscarDadosPedidoItem();
 
 							$scope.pedidoItem.idProduto = "";
@@ -138,7 +137,7 @@ myApp.controller('pedidoController',  ['$state', '$scope', '$http', '$rootScope'
 
 	}
 
-	$scope.deletaPedidoItem = function(id_deletar){
+	$scope.deletaPedidoItem = function(id_deletar, item_valor_unitario_total){
 
 		$http({
 		method  : 'POST',
@@ -148,13 +147,18 @@ myApp.controller('pedidoController',  ['$state', '$scope', '$http', '$rootScope'
 		    },
 		headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)		
 		}).then(function (data) {
-			alert(data.data);
+			alert("Deletado com sucesso!");
       	});
+    
+	
+ 		$scope.totalPedido = $scope.totalPedido - item_valor_unitario_total;
 
 		$scope.buscarDadosPedidoItem();
-		// atualiza a lista
 
-	}
+
+    }
+
+
 
 
 	// zerando os valores para obrigar o usuario a repor os valores

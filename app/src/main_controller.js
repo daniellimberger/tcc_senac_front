@@ -22,14 +22,13 @@ myApp.controller('mainController',  ['$scope', '$mdSidenav', '$rootScope',functi
                     window.location.href = '#!/login';
     }
 
-    $rootScope.logado = false;
+    //$rootScope.logado = false;
 
 
-    if($rootScope.logado == false){
+    if($rootScope.logado != true){
                     $rootScope.logado = false;
                     $rootScope.idVendedor = "";
                     $rootScope.exibeBtSair = false;
-                    alert("Você precisa estar logado para ter acesso ao painel do sistema!");
                     window.location.href = '#!/login';     
     }
 

@@ -28,16 +28,14 @@ myApp.controller('relatorioVendasController',  ['$scope', '$http', '$rootScope',
 
 	$scope.atualizaRelatorio = function(){
 
-		alert($scope.periodo_inicio);
-		alert($scope.periodo_fim);		
 
 		$http({
 		method  : 'POST',
 		url     :  url_base+"Controller/vendas_controller.php?function=listar_todos_pedido",
 		data: {
 				idCliente		  : $scope.cliente,
-		    	periodoInicio     : $scope.periodo_inicio,
-		    	periodoFim		  : $scope.periodo_fim		    	
+		    	periodoInicio     : moment($scope.periodo_inicio).format('YYYY-MM-DD'),
+		    	periodoFim		  : moment($scope.periodo_fim).format('YYYY-MM-DD')
 		    },	
 		headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)		
 		}).then(function (data) {

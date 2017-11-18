@@ -3,8 +3,6 @@ myApp.controller('loginController',   ['$scope', '$http', '$rootScope', function
 
 	$rootScope.tituloPagina = "Login";
 
-//	$rootScope.logado = false;
-
 	$rootScope.idVendedor = "";
 	$rootScope.tipoUser = "";
 
@@ -58,9 +56,6 @@ myApp.controller('loginController',   ['$scope', '$http', '$rootScope', function
 		 	}else{
 		 		alert('Login e ou Senha inválido(s)!');
 		 	}
-		 	//console.log(retorno.data);
-		 	// colocar um alerta aqui, feedback ao usuario
-
 
 
 		 });		
