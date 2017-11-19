@@ -42,6 +42,11 @@
                 {{pedido.dataPrevisaoEntrega}}
               </div>
 
+              <div>
+                <label>Forma de Pagamento (av = À vista | 30 = 30 Dias | 60 = 60 Dias)</label>
+                {{pedido.formaPagamento}}
+              </div>              
+
         </div>
 
 
@@ -112,7 +117,7 @@
 
             <md-input-container class="md-block" flex-gt-sm>
               <label>Pedido Nro:</label>
-              <input type="text"ng-model="pedido.nro_pedido" disabled>
+              <input type="text" ng-model="pedido.nro_pedido" disabled>
             </md-input-container>
 
             <md-input-container class="md-block" flex-gt-sm>
@@ -140,7 +145,12 @@
               <input type="date" ng-model="pedido.dataPrevisaoEntrega">
             </md-input-container>
 
-            <br>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Forma Pagamento</label>
+              <input type="text" maxlength="2" size="2" ng-model="pedido.formaPagamento" placeholder="av | 30 | 60">
+            </md-input-container>   
+            
+           <br>
 
             <md-button ng-click="cadastrarPedido()" class="md-raised" ng-class="{'md-warn':pedidoNaoiniciado, 'md-primary':pedidoIniciado}">Iniciar Pedido</md-button>
 
@@ -150,6 +160,7 @@
 
       </div>
 
+  
 
 <!-- inicio desabilita / habilita -->
 <!-- aqui a ideia é habilitar esta area somente após o cliente criar o cabeçalho do pedido , questão de usabilidade, evitar que o usuario use errado a tela -->
@@ -325,6 +336,10 @@
                         </md-input-container>
 
                         <md-input-container class="md-block" flex-gt-sm>
+                          (FORMA PAGTO)
+                        </md-input-container>                        
+
+                        <md-input-container class="md-block" flex-gt-sm>
                           (VALOR)
                         </md-input-container>
 
@@ -363,6 +378,9 @@
                           {{ped.pedido_dataprevisaoentrega}}
                         </md-input-container>                        
 
+                        <md-input-container class="md-block" flex-gt-sm>
+                          {{ped.pedido_forma_pagto}}
+                        </md-input-container>
 
                         <md-input-container class="md-block" flex-gt-sm>
                           {{ped.pedido_valortotal}}

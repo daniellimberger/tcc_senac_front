@@ -59,7 +59,7 @@ myApp.controller('vendedorController',  ['$scope', '$http','$rootScope',  functi
 					        },
 					  headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
 					 }).then(function (data) {
-    					console.log(data);
+							alert('Cadastrado com sucesso!');
 					 });
 
 		$scope.buscarDadosVendedor();		
@@ -93,7 +93,7 @@ myApp.controller('vendedorController',  ['$scope', '$http','$rootScope',  functi
 		    },
 		headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)		
 		}).then(function (data) {
-			alert('deletou');
+			alert('Deletado com sucesso!');
       	});
 
 		$scope.buscarDadosVendedor();

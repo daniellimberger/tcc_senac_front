@@ -3,7 +3,7 @@
     <md-card layout flex="100">
     <md-card-content  layout-gt-sm="column" flex="100">
 
-      <form name="vendedorForm">
+      <form name="vendedorForm" autocomplete="off">
 
         <div layout-gt-sm="row" >
           <md-input-container class="md-block" flex-gt-sm>
@@ -68,12 +68,12 @@
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Login</label>
-            <input ng-model="vendedor.login"> 
+            <input ng-model="vendedor.login" autocomplete="off"> 
           </md-input-container>
 
           <md-input-container class="md-block" flex-gt-sm>
             <label>Senha</label>
-            <input type="password" ng-model="vendedor.senha">
+            <input type="password" ng-model="vendedor.senha" autocomplete="off">
           </md-input-container>
 
           <md-input-container class="md-block" flex-gt-sm>

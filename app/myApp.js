@@ -116,3 +116,8 @@ myApp.filter('unique', function() {
 
 		// definindo url base, isto serve para que se o sistema mudar de servidor, eu precise alterar somente aqui
 		var url_base = "http://localhost:8081/";
+		//var url_base = "http://www.ligiano.info/tcc_daniel/back/";
+
+
+		var url_base_front = "";
+		///var url_base_front = "http://www.ligiano.info/tcc_daniel/front";		
